@@ -11,6 +11,7 @@ import {
   Button,
   useWindowDimensions,
   Platform,
+  ImageBackground
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import RNPickerSelect from 'react-native-picker-select';
@@ -156,7 +157,13 @@ const ClassesScreen: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+    source={require('../../assets/images/isf.jpg')}
+    style={styles.backgroundImage}
+    resizeMode="cover"
+
+    >
+      <View style={styles.overlay}>
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>📚 Classes</Text>
@@ -231,6 +238,8 @@ const ClassesScreen: React.FC = () => {
         </View>
       </Modal>
     </View>
+    </ImageBackground>
+    
   );
 };
 
@@ -265,6 +274,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 8,
     alignItems: 'center',
+  },
+  backgroundImage: {
+  flex: 1,
+  width: '100%', 
+  height: '100%', 
+  },
+  overlay: {
+    flex: 1,
   },
   detailsButtonText: {
     color: '#fff',

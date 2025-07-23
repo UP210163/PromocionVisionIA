@@ -12,6 +12,7 @@ import {
   ActivityIndicator,
   useWindowDimensions,
   Alert,
+  ImageBackground
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import axios from 'axios';
@@ -134,7 +135,12 @@ const TeachersScreen: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('../../assets/images/upf.jpg')}
+      style={styles.backgroundImage}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>👩‍🏫 Teachers</Text>
         <TouchableOpacity style={styles.addButton} onPress={() => setModalVisible(true)}>
@@ -182,6 +188,7 @@ const TeachersScreen: React.FC = () => {
         </View>
       </Modal>
     </View>
+    </ImageBackground>
   );
 };
 
@@ -209,6 +216,14 @@ const styles = StyleSheet.create({
   detailsButton: {
     marginTop: 10, backgroundColor: '#22c55e', paddingVertical: 10,
     borderRadius: 8, alignItems: 'center',
+  },
+  backgroundImage: {
+  flex: 1,
+  width: '100%',  
+  height: '100%', 
+  },
+  overlay: {
+    flex: 1,
   },
   detailsButtonText: { color: '#fff', fontWeight: '600', fontSize: 16 },
   modalOverlay: {

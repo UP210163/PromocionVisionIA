@@ -10,6 +10,7 @@ import {
   Button,
   ActivityIndicator,
   useWindowDimensions,
+  ImageBackground
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import axios from 'axios';
@@ -169,7 +170,12 @@ const StudentsScreen: React.FC = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('../../assets/images/tif.jpg')}
+      style={styles.backgroundImage}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
       {/* Header con botón verde arriba a la derecha */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Estudiantes</Text>
@@ -244,6 +250,7 @@ const StudentsScreen: React.FC = () => {
         </View>
       </Modal>
     </View>
+    </ImageBackground>
   );
 };
 
@@ -261,6 +268,14 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     color: '#fff',
+  },
+  backgroundImage: {
+  flex: 1,
+  width: '100%',  
+  height: '100%', 
+  },
+  overlay: {
+    flex: 1,
   },
   addButton: {
     flexDirection: 'row',
